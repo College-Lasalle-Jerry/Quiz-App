@@ -9,10 +9,12 @@ import Foundation
 
 struct Question {
     let text: String
-    let answer: String
+    let answer: [String] // list of strings which will hold 3 choices for us.
+    let rightAnswer: String
     
-    init(q: String, a: String) {
+    init(q: String, a: [String], correctAnswer: String) {
         self.text = q
         self.answer = a
-    }
+        self.rightAnswer = correctAnswer
+    } // we decalred the parameterised constructors.
 }

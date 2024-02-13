@@ -18,11 +18,14 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var progressView: UIProgressView!
     
-    // buttons
+    // buttons (IB Outlets)
     
-    @IBOutlet weak var trueButton: UIButton!
+    @IBOutlet weak var choice1: UIButton!
     
-    @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var choice2: UIButton!
+    
+    @IBOutlet weak var choice3: UIButton!
+    
     
     var quiz = Quiz() // initialise
     
@@ -31,15 +34,23 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // we will explicitily set the border for the button.
-        trueButton.layer.cornerRadius = 25
-        trueButton.layer.borderWidth = 2
-        trueButton.layer.borderColor = UIColor.gray.cgColor
         
-        // false button
-        falseButton.layer.cornerRadius = 25
-        falseButton.layer.borderWidth = 2
-        falseButton.layer.borderColor = UIColor.gray.cgColor
+        // we will explicitily set the border for the button.
+        // Choice 1
+        choice1.layer.cornerRadius = 25
+        choice1.layer.borderWidth = 2
+        choice1.layer.borderColor = UIColor.gray.cgColor
+        
+        // Choice 2
+        choice2.layer.cornerRadius = 25
+        choice2.layer.borderWidth = 2
+        choice2.layer.borderColor = UIColor.gray.cgColor
+        
+        // choice 3
+        choice3.layer.cornerRadius = 25
+        choice3.layer.borderWidth = 2
+        choice3.layer.borderColor = UIColor.gray.cgColor
+
         
         updateUI()
         
@@ -71,9 +82,17 @@ class ViewController: UIViewController {
         scoreLabel.text = "Score: \(quiz.getScore())"
         progressView.progress = quiz.getProgess() // Update the progess.
         
+        let choices = quiz.getAnswers()
+        // this will fetch the list of choices we have, for that current question
+        
+        choice1.setTitle(choices[0], for: .normal)
+        choice2.setTitle(choices[1], for: .normal)
+        choice3.setTitle(choices[2], for: .normal)
+        
         // change the color of the button
-        trueButton.backgroundColor = UIColor.clear
-        falseButton.backgroundColor = UIColor.clear
+        choice1.backgroundColor = UIColor.clear
+        choice2.backgroundColor = UIColor.clear
+        choice3.backgroundColor = UIColor.clear
     }
     
     
